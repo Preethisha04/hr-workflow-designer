@@ -1,73 +1,96 @@
 # HR Workflow Designer
 
-A visual drag-and-drop workflow builder for HR processes, built with React, TypeScript, ReactFlow, and Zustand.
+A visual, node-based workflow builder for HR processes built using React Flow.
+This application allows users to design, configure, and simulate workflows such as onboarding, approvals, and automation pipelines.
 
-## 🚀 Live Demo Setup
+---
+
+## 🚀 Getting Started
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173)
+---
+
+## Core Features
+
+### 🔷 Interactive Workflow Canvas
+
+* Drag-and-drop node creation
+* Connect nodes with edges to define flow
+* Zoom, pan, and minimap support
+* Delete nodes and edges dynamically
 
 ---
 
-## ✨ Features
+### 🧩 Multiple Node Types
 
-### 🎨 Visual Canvas
-- Drag-and-drop node creation from the sidebar palette
-- Connect nodes with animated edges
-- Pan, zoom, and minimap navigation
-- Delete nodes with the `Delete` key
-- Empty-state hint when canvas is empty
+Supports different workflow stages:
 
-### 🧩 Node Types
-| Node | Purpose |
-|------|---------|
-| 🚀 **Start** | Entry point of the workflow |
-| 📋 **Task** | Assign work to a team member |
-| 🔐 **Approval** | Require sign-off from a role |
-| ⚡ **Automation** | Trigger automated actions (email, HRIS, etc.) |
-| 🔀 **Condition** | Branch based on field evaluation |
-| 🏁 **End** | Marks workflow completion |
+* **Start** – Entry point
+* **Task** – Assign actions
+* **Approval** – Role-based decisions
+* **Automation** – Trigger system actions
+* **Condition** – Branch logic
+* **End** – Workflow completion
 
-### 📝 Node Configuration (Right Panel)
-- Click any node to open its config form
-- Context-aware fields per node type
-- Dynamic automation parameter inputs
-- Priority badges, assignee, due dates
-- Delete node from form header
+---
 
-### 📦 Templates
-Load pre-built HR workflows from the sidebar:
-- **Employee Onboarding** – collect docs → approval → IT setup
-- **Leave Approval** – condition branch for short vs long leave
-- **Performance Review** – self-assessment → manager review → HR sign-off
+### 📝 Dynamic Node Configuration
 
-### ▶️ Simulation Panel
-- Validates workflow before running (checks for Start/End node, disconnected nodes)
-- Animated step-by-step execution with logs
-- Color-coded log levels: info, success, warning, error
-- Node breakdown stats
-- Real-time active-node highlighting on canvas
+* Click any node to edit properties
+* Schema-driven form system
+* Context-aware inputs per node type
+* Real-time updates to workflow state
+
+---
+
+### ⚙️ API-driven Automation
+
+* Fetch automation actions dynamically
+* Populate dropdown from API layer
+* Render dynamic parameter inputs based on selection
+
+---
+
+### ▶️ Workflow Simulation Engine
+
+* Validates workflow before execution
+* Detects:
+
+  * Missing Start node
+  * Disconnected nodes
+* Simulates execution step-by-step
+* Displays logs of workflow progression
+
+---
 
 ### 📤 Import / Export
-- Export workflow as `workflow.json`
-- Import a previously saved workflow JSON
+
+* Export workflows as JSON
+* Import saved workflows
+
+---
+
+## 🧠 Architecture Highlights
+
+* Zustand store for centralized workflow state
+* Schema-driven forms for dynamic configuration
+* Service layer abstraction for API interaction
+* Graph utilities for validation and serialization
+* Modular component structure for scalability
 
 ---
 
 ## 🛠 Tech Stack
 
-| Tech | Role |
-|------|------|
-| **React 18** | UI framework |
-| **TypeScript** | Type safety |
-| **ReactFlow 11** | Node-based canvas |
-| **Zustand 4** | Global state management |
-| **Tailwind CSS 3** | Utility-first styling |
-| **Vite 5** | Build tool & dev server |
+* React + TypeScript
+* React Flow
+* Zustand
+* Tailwind CSS
+* Vite
 
 ---
 
@@ -75,65 +98,43 @@ Load pre-built HR workflows from the sidebar:
 
 ```
 src/
-├── App.tsx                      # Root layout
-├── index.css                    # Global styles + CSS variables
-├── main.tsx                     # Entry point
-│
 ├── components/
 │   ├── canvas/
-│   │   ├── Sidebar.tsx          # Node palette + templates
-│   │   ├── WorkflowCanvas.tsx   # ReactFlow canvas with D&D
-│   │   ├── NodeFormPanel.tsx    # Selected node config form
-│   │   ├── SimulationPanel.tsx  # Run & view simulation logs
-│   │   └── Toolbar.tsx          # Export / Import / Clear
-│   └── nodes/
-│       ├── BaseNode.tsx         # Shared node wrapper
-│       ├── StartNode.tsx
-│       ├── TaskNode.tsx
-│       ├── ApprovalNode.tsx
-│       ├── AutomationNode.tsx
-│       ├── ConditionNode.tsx
-│       └── EndNode.tsx
+│   ├── nodes/
 │
 ├── config/
-│   └── nodeFormSchema.ts        # Field definitions per node type
-│
 ├── hooks/
-│   └── useAutomations.ts        # Fetch automation actions
-│
 ├── services/api/
-│   ├── automation.ts            # Mock automation actions API
-│   └── simulation.ts            # Topological simulation engine
-│
 ├── store/
-│   └── workflowStore.ts         # Zustand state (nodes, edges, sim)
-│
 ├── types/
-│   ├── workflow.types.ts        # Node & workflow type definitions
-│   └── form.types.ts            # Form field type definitions
-│
-└── utils/
-    └── graphutils.ts            # Validate, serialize, ID generation
+├── utils/
 ```
 
 ---
 
-## 🧪 How to Use
+## 🧪 How It Works
 
-1. **Add nodes** — drag from the left sidebar onto the canvas, or click to place
-2. **Connect nodes** — drag from a node's bottom handle to another node's top handle
-3. **Configure nodes** — click a node to edit its properties in the right panel
-4. **Load a template** — click "Templates" tab in the sidebar
-5. **Run simulation** — click ▶ Run Workflow in the Simulation panel
-6. **Export** — click Export in the toolbar to save as JSON
+1. Add nodes from the sidebar
+2. Connect nodes to define workflow
+3. Configure nodes using the form panel
+4. Run simulation to validate execution
+5. Export workflow as JSON
 
 ---
 
-## 📋 Scripts
+## 🔮 Future Improvements
 
-```bash
-npm run dev      # Start development server
-npm run build    # Production build
-npm run preview  # Preview production build
-npm run lint     # ESLint check
-```
+* Undo / Redo functionality
+* Advanced validation (cycle detection)
+* Backend integration
+* Real-time collaboration
+
+---
+
+## 📌 Key Learning Outcomes
+
+* Building graph-based UI systems
+* Managing complex state with Zustand
+* Designing scalable frontend architecture
+* Implementing dynamic form systems
+* Handling workflow simulation logic
