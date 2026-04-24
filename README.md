@@ -5,6 +5,12 @@ This application allows users to design, configure, and simulate workflows such 
 
 ---
 
+## 🌐 Live Demo
+
+[View Live Project](https://hr-workflow-designer-tmwq.vercel.app/)
+
+---
+
 ## 🚀 Getting Started
 
 ```bash
@@ -14,7 +20,7 @@ npm run dev
 
 ---
 
-## Core Features
+##  Core Features
 
 ### 🔷 Interactive Workflow Canvas
 
